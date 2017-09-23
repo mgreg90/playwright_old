@@ -35,12 +35,12 @@ function install() {
   echo 'Repo Copied Over'
   
   # source playwright.sh in bash profile
-  TEST_STRING="source '~/playwright/playwright.sh'"
+  TEST_STRING="source \"$HOME/playwright/.src/playwright.sh\""
   if grep -q "$TEST_STRING" "$PLAYWRIGHT_BASH_PROFILE"
   then
     echo 'playwright.sh Already Sourced'
   else
-    echo "\n\n# Source playwright ruby scripting framework\nsource '~/playwright/playwright.sh'" >> $PLAYWRIGHT_BASH_PROFILE || (echo "Invalid Bash Profile Path!" && return 1)
+    echo "\n\n# Source playwright ruby scripting framework\n$TEST_STRING" >> $PLAYWRIGHT_BASH_PROFILE || (echo "Invalid Bash Profile Path!" && return 1)
     echo 'Sourced playwright.sh'
   fi
   
@@ -49,6 +49,7 @@ function install() {
   
   # Blammo! Done installing!
   echo 'Playwright has been installed!'
+  echo 'Please restart your terminal.'
   
 }
 
@@ -61,9 +62,9 @@ function uninstall() {
     rm -rf ~/playwright
   fi
   
-  if grep -Fxq "source '~/playwright/playwright.sh'" $PLAYWRIGHT_BASH_PROFILE
+  if grep -Fxq "$TEST_STRING" $PLAYWRIGHT_BASH_PROFILE
   then
-    sed -i "source '~/playwright/playwright.sh'" $PLAYWRIGHT_BASH_PROFILE
+    sed -i "$TEST_STRING" $PLAYWRIGHT_BASH_PROFILE
     sed -i "# Source playwright ruby scripting framework" $PLAYWRIGHT_BASH_PROFILE
   fi
   echo "Install failed!"
