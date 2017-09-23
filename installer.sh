@@ -1,6 +1,16 @@
 # Welcome to playwright!
 
 function install() {
+  # Cancels install if same version
+  if [ -d ~/playwright ]
+  then
+    CURRENT_VERSION=$(cat ~/playwright/.src/.version)
+  else
+    CURRENT_VERSION=0
+  fi
+  NEW_VERSION=$(cat .version)
+  [ $CURRENT_VERSION -ge $NEW_VERSION ] && echo "You already have the latest version installed!" && return 1
+  
   # Cancel install if no bash profile given
   [ -z "$1" ] && echo "You gotta gimme your bash profile bruh" && return 1
   
@@ -18,7 +28,10 @@ function install() {
   echo 'File Structure Created'
   
   # Copy this repo over
+  mv "$(pwd)/.git" "$(pwd)/.git_temp"
+  rm -rf ~/playwright/.src
   cp -R $(pwd) ~/playwright/.src
+  mv "$(pwd)/.git_temp" "$(pwd)/.git"
   echo 'Repo Copied Over'
   
   # source playwright.sh in bash profile
@@ -30,6 +43,9 @@ function install() {
     echo "\n\n# Source playwright ruby scripting framework\nsource '~/playwright/playwright.sh'" >> $PLAYWRIGHT_BASH_PROFILE || (echo "Invalid Bash Profile Path!" && return 1)
     echo 'Sourced playwright.sh'
   fi
+  
+  # Remove playwright_temp
+  [ -d ~/playwright_temp ] && rm -rf ~/playwright_temp
   
   # Blammo! Done installing!
   echo 'Playwright has been installed!'
