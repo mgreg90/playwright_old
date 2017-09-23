@@ -1,12 +1,8 @@
-#!/bin/bash
+# Welcome to playwright!
 
-# if there is no ~/playwright
-# cd ~
-# mkdir playwright
-# cd playwright
-# gem install all the gems we use
-# 
-# add ~/playwright/shell/* to path
-export PATH=$PATH:~/playwright/.src/playwright_commands.sh
-# export PATH=$PATH:~/playwright/shell/.generated_commands.sh
-# export PATH=$PATH:~/playwright/shell/user_commands.sh
+# Create file structure
+md -pv ~/playwright/plays ~/playwright/lib/classes ~/playwright/lib/modules ~/playwright/shell ~/playwright/.src
+# Copy this repo over
+cp -Rv $(pwd) ~/playwright/.src
+# Blammo! Done installing!
+echo 'Playwright has been installed!'

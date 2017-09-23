@@ -5,5 +5,5 @@
 ## Install
 ```shell
 git clone git@github.com:mgreg90/playwright.git
-sh playwright/installer.sh
+ruby playwright/installer.rb
 ```
