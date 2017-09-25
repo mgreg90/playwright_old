@@ -13,45 +13,56 @@ The Generator
 All commands start with `playwright` except for the installer
 
 1. `sh installer.sh path_to_bash_profile`
+  status: IMPLEMENTED
   - Installs playwright by:
     a. building empty file structure below.
     b. putting path_to_bash_profile in config.json
     c. copying itself into ~/playwright/.src
 
 2. `playwright g play [play_name]`
+  status: NOT IMPLEMENTED
   - Builds a new play template whose class name and bash command will both be 
     `play_name`. Class name will be adjusted to ruby conventions, but bash
     command will not change.
 
 3. `playwright g module [module_name]`
+  status: NOT IMPLEMENTED
   - Creates a very bland, empty module with the name given in the lib/modules directory.
 
 4. `playwright g class [class_name]`
+  status: NOT IMPLEMENTED
   - Creates a very bland, empty class with the name given in the lib/modules directory.
   
 5. `playwright apply`
+  status: NOT IMPLEMENTED
   - Builds a .generated_commands.sh file with all the plays in the plays folder.
   - Sources bash profile.
   
 6. `playwright update`
+  status: NOT IMPLEMENTED
   - downloads latest version from github and runs installer.sh
   
 7. `playwright uninstall`
+  status: IMPLEMENTED
   - `rm -rf ~/playwright`
   
 8. `playwright d play [play_name]`
+  status: NOT IMPLEMENTED
   - deletes the play with that play_name
   
 9. `playwright d module [module_name]`
+  status: NOT IMPLEMENTED
   - deletes the module
   
 10. `playwright d class [class_name]`
+  status: NOT IMPLEMENTED
   - deletes the class
   
 11. `playwright list`
+  status: NOT IMPLEMENTED
   - lists all plays
-    
-    
+
+
 Client File Structure
 ======================================================
 ~/playwright
