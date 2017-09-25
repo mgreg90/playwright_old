@@ -97,10 +97,12 @@ playwright
 |   |   |- play.rb.sample
 |- .gitignore
 |- .version
+|- commands.rb
 |- installer.sh
 |- notes.txt
 |- playwright.sh
 |- README.md
+|- variables.rb
 
   
   
