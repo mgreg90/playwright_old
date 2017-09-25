@@ -1,6 +1,7 @@
 # Welcome to playwright!
 
 function install() {
+  
   # Cancels install if same version
   if [ -d ~/playwright ]
   then
@@ -9,19 +10,24 @@ function install() {
     CURRENT_VERSION=0
   fi
   NEW_VERSION=$(cat .version)
-  [ $CURRENT_VERSION -ge $NEW_VERSION ] && echo "You already have the latest version installed!" && return 1
+  [ $CURRENT_VERSION -ge $NEW_VERSION ] && echo "You already have the latest version installed!" && return 0
+  
+  # Store bash profile path in variable
+  export PLAYWRIGHT_BASH_PROFILE=$1
+  export SOURCE_PLAYWRIGHT="$HOME/playwright/.src/playwright.sh"
   
   # Cancel install if no bash profile given
-  [ -z "$1" ] && echo "You gotta gimme your bash profile bruh" && return 1
+  [ -z "$PLAYWRIGHT_BASH_PROFILE" ] && echo "You gotta gimme your bash profile bruh" && return 1
   
   # Cancel install if invalid bash profile path is given
-  [ -d "$1" ] && echo "Invalid bash profile path bruh" && return 1
+  if [ ! -f "$PLAYWRIGHT_BASH_PROFILE" ]
+  then
+    echo "Invalid bash profile path bruh"
+    return 1
+  fi
   
   # Copy current files to temp path
   [ -d ~/playwright ] && cp -R ~/playwright ~/playwright_temp
-  
-  # Store bash profile path in variable
-  export PLAYWRIGHT_BASH_PROFILE="$1"
   
   # Create file structure
   mkdir -p ~/playwright/plays ~/playwright/lib/classes ~/playwright/lib/modules ~/playwright/shell ~/playwright/.src
@@ -35,12 +41,11 @@ function install() {
   echo 'Repo Copied Over'
   
   # source playwright.sh in bash profile
-  TEST_STRING="source \"$HOME/playwright/.src/playwright.sh\""
-  if grep -q "$TEST_STRING" "$PLAYWRIGHT_BASH_PROFILE"
+  if grep -q "$SOURCE_PLAYWRIGHT" "$PLAYWRIGHT_BASH_PROFILE"
   then
     echo 'playwright.sh Already Sourced'
   else
-    echo "\n\n# Source playwright ruby scripting framework\n$TEST_STRING" >> $PLAYWRIGHT_BASH_PROFILE || (echo "Invalid Bash Profile Path!" && return 1)
+    echo "\n\n# Source playwright ruby scripting framework\nexport SOURCE_PLAYWRIGHT=\"$SOURCE_PLAYWRIGHT\"\nexport PLAYWRIGHT_BASH_PROFILE=\"$1\"\nsource \"$SOURCE_PLAYWRIGHT\"" >> $PLAYWRIGHT_BASH_PROFILE || (echo "Invalid Bash Profile Path!" && return 1)
     echo 'Sourced playwright.sh'
   fi
   
@@ -54,6 +59,7 @@ function install() {
 }
 
 function uninstall() {
+  # Return playwright to original state
   if [ -d ~/playwright_temp ]
   then
     cp -R ~/playwright_temp ~/playwright
@@ -62,10 +68,14 @@ function uninstall() {
     rm -rf ~/playwright
   fi
   
-  if grep -Fxq "$TEST_STRING" $PLAYWRIGHT_BASH_PROFILE
+  # Remove lines that source playwright
+  if grep -Fxq "$SOURCE_PLAYWRIGHT" $PLAYWRIGHT_BASH_PROFILE
   then
-    sed -i "$TEST_STRING" $PLAYWRIGHT_BASH_PROFILE
-    sed -i "# Source playwright ruby scripting framework" $PLAYWRIGHT_BASH_PROFILE
+    echo "$SOURCE_PLAYWRIGHT"
+    echo "$PLAYWRIGHT_BASH_PROFILE"
+    sed -i '' "$SOURCE_PLAYWRIGHT" $PLAYWRIGHT_BASH_PROFILE
+    # sed -i '' "# Source playwright ruby scripting framework" $PLAYWRIGHT_BASH_PROFILE
+    # sed -i '' "export PLAYWRIGHT_BASH_PROFILE=\"$1\"" $PLAYWRIGHT_BASH_PROFILE
   fi
   echo "Install failed!"
 }
