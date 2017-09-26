@@ -4,6 +4,7 @@ module Playwright
     HOME = ENV['HOME'].freeze
     INSTALL_PATH = "#{HOME}/playwright".freeze
     PLAYS_PATH = File.join(INSTALL_PATH, 'plays').freeze
+    SHELL_PATH = File.join(INSTALL_PATH, 'shell').freeze
     COMMANDS_PATH = File.join(INSTALL_PATH, '.src', 'commands')
     LIB_PATH = File.join(INSTALL_PATH, '.src', 'lib')
     TEMPLATES_PATH = File.join(INSTALL_PATH, '.src', 'lib', 'templates')

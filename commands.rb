@@ -4,12 +4,17 @@ require_relative './lib/utils.rb'
 require_relative './lib/file_builder.rb'
 
 require_relative './variables.rb'
+require_relative './commands/apply.rb'
 require_relative './commands/destroy.rb'
 require_relative './commands/generate.rb'
 require_relative './commands/uninstall.rb'
 
 module Playwright
   module Commands
+
+    def self.apply(argv)
+      Apply.run
+    end
 
     def self.destroy(argv)
       Destroy.run(argv)
