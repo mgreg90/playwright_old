@@ -10,6 +10,6 @@ class **PLAY_NAME**
   
   def run
     # add code here
-  run
+  end
   
 end

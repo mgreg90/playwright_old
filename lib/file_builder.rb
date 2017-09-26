@@ -1,9 +1,11 @@
 require_relative '../variables.rb'
+require_relative './utils.rb'
 
 module Playwright
   class FileBuilder
     
     include Playwright::Variables
+    include Playwright::Utils
     
     PLAY_NAME_PLACEHOLDER = '**PLAY_NAME**'.freeze
     DEF_ARGS_PLACEHOLDER = '**DEF_ARGS**'.freeze
@@ -18,14 +20,15 @@ module Playwright
     attr_reader :type, :args
     
     def self.build(type, name, *args)
-      new(type, name, *args).build
-      self
+      inst = new(type, name, *args)
+      inst.build
+      inst
     end
     
     def initialize(type, name, *args)
       # name should be snake case
       @type = type.to_sym
-      @name = name
+      @name = to_snake_case(name)
       @args = args
     end
     
@@ -48,18 +51,20 @@ module Playwright
     def template
       case type
       when :play
-        File.join('.', TEMPLATE_FOLDER, PLAY_TEMPLATE_FILENAME)
+        File.join(HOME, 'playwright', '.src', 'lib', TEMPLATE_FOLDER, PLAY_TEMPLATE_FILENAME)
       end
     end
     
     def dest_file
       case type
       when :play
-        File.join('..', '..', PLAY_DEST_PATH, "#{name}.rb")
+        File.join(HOME, 'playwright', PLAY_DEST_PATH, "#{name}.rb")
       end
     end
     
     def build_play
+      p dest_file
+      p FileUtils.pwd
       FileUtils.touch(dest_file)
       # loop template and build new file with map
       File.open(dest_file, 'w') do |output_file|
