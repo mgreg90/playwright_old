@@ -56,9 +56,12 @@ function install() {
   [ -d ~/playwright_temp ] && rm -rf ~/playwright_temp
   
   # Blammo! Done installing!
-  echo 'Playwright has been installed!'
-  echo 'Please restart your terminal.'
-  
+  if [[ $PLAYWRIGHT_BASH_PROFILE == *"zsh"* ]]
+  then
+    zsh
+  fi
+  source "$PLAYWRIGHT_BASH_PROFILE"
+  echo 'Playwright has been installed!'  
 }
 
 function uninstall() {

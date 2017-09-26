@@ -34,7 +34,7 @@ module Playwright
         File.open(GENERATED_COMMANDS_FILE, 'w+') do |file|
           file.puts(lines)
         end
-        puts "Your plays have been applied! Please restart this terminal."
+        puts "Your plays have been applied!"
       end
 
       def command_from_string(string)
