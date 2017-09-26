@@ -13,3 +13,5 @@ class **PLAY_NAME**
   end
   
 end
+
+ARGV.length > 1 ? **PLAY_NAME**.run(*ARGV[1..-1]) : **PLAY_NAME**.run

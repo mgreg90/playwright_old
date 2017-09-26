@@ -17,6 +17,7 @@ module Playwright
       
       def run
         Playwright::FileBuilder.build(type, command_name, *args)
+        `$EDITOR #{Playwright::Variables::INSTALL_PATH}`
         puts "Built successfully!"
       end
             
