@@ -20,7 +20,7 @@ All commands start with `playwright` except for the installer
     c. copying itself into ~/playwright/.src
 
 2. `playwright g play [play_name]`
-  status: NOT IMPLEMENTED
+  status: IMPLEMENTED
   - Builds a new play template whose class name and bash command will both be 
     `play_name`. Class name will be adjusted to ruby conventions, but bash
     command will not change.
@@ -34,7 +34,7 @@ All commands start with `playwright` except for the installer
   - Creates a very bland, empty class with the name given in the lib/modules directory.
   
 5. `playwright apply`
-  status: NOT IMPLEMENTED
+  status: IMPLEMENTED
   - Builds a .generated_commands.sh file with all the plays in the plays folder.
   - Sources bash profile.
   
@@ -47,7 +47,7 @@ All commands start with `playwright` except for the installer
   - `rm -rf ~/playwright`
   
 8. `playwright d play [play_name]`
-  status: NOT IMPLEMENTED
+  status: IMPLEMENTED
   - deletes the play with that play_name
   
 9. `playwright d module [module_name]`
@@ -59,7 +59,7 @@ All commands start with `playwright` except for the installer
   - deletes the class
   
 11. `playwright list`
-  status: NOT IMPLEMENTED
+  status: IMPLEMENTED
   - lists all plays
 
 
