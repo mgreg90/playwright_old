@@ -2,6 +2,10 @@
 
 playwright() {
   ruby ~/playwright/.src/commands.rb "$@"
+  if [[ "$1" == "apply" || "$1" == "uninstall" ]]
+  then
+    source "$PLAYWRIGHT_BASH_PROFILE"
+  fi
 }
 
 if [ -f "$HOME/playwright/shell/.generated_commands.sh" ]
