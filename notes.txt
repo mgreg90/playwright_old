@@ -1,0 +1,122 @@
+Playwright is a ruby scripting framework.
+
+Thoughts
+======================================================
+I should be able to write ruby code that will run as a regular bash command.
+Each ruby script (called a play) will have a `run` class method that is called
+  when the command is run in the terminal.
+Playwright will have a generator that lets me run terminal commands to build
+  templates for new plays.
+
+The Generator
+======================================================
+All commands start with `playwright` except for the installer
+
+1. `sh installer.sh path_to_bash_profile`
+  status: IMPLEMENTED
+  - Installs playwright by:
+    a. building empty file structure below.
+    b. putting path_to_bash_profile in config.json
+    c. copying itself into ~/playwright/.src
+
+2. `playwright g play [play_name]`
+  status: IMPLEMENTED
+  - Builds a new play template whose class name and bash command will both be 
+    `play_name`. Class name will be adjusted to ruby conventions, but bash
+    command will not change.
+
+3. `playwright g module [module_name]`
+  status: NOT IMPLEMENTED
+  - Creates a very bland, empty module with the name given in the lib/modules directory.
+
+4. `playwright g class [class_name]`
+  status: NOT IMPLEMENTED
+  - Creates a very bland, empty class with the name given in the lib/modules directory.
+  
+5. `playwright apply`
+  status: IMPLEMENTED
+  - Builds a .generated_commands.sh file with all the plays in the plays folder.
+  - Sources bash profile.
+  
+6. `playwright update`
+  status: NOT IMPLEMENTED
+  - downloads latest version from github and runs installer.sh
+  
+7. `playwright uninstall`
+  status: IMPLEMENTED
+  - `rm -rf ~/playwright`
+  
+8. `playwright d play [play_name]`
+  status: IMPLEMENTED
+  - deletes the play with that play_name
+  
+9. `playwright d module [module_name]`
+  status: NOT IMPLEMENTED
+  - deletes the module
+  
+10. `playwright d class [class_name]`
+  status: NOT IMPLEMENTED
+  - deletes the class
+  
+11. `playwright list`
+  status: IMPLEMENTED
+  - lists all plays
+
+
+Client File Structure
+======================================================
+~/playwright
+  |- plays
+  |   |- play_1
+  |   |   |- package.json
+  |   |   |- play_1.rb
+  |   |   |- src
+  |   |   |   |- subclass_1.rb
+  |- commands
+  |   |- (playwright commands like `playwright g play ...` go in here)
+  |- lib
+  |   |- classes
+  |   |   |- abstract_service.rb
+  |   |- modules
+  |   |   |- example_utility_module.rb
+  |- shell
+  |   |- user_commands.sh
+  |   |- .generated_commands.sh
+  |- .src
+  |   |- (complete copy of playwright from github)
+  
+Playwright File Structure
+======================================================
+playwright
+|- commands
+|   |- apply
+|   |- apply.rb
+|   |- destroy
+|   |- destroy.rb
+|   |- generate
+|   |- generate.rb
+|   |- list
+|   |- list.rb
+|   |- update
+|   |- update.rb
+|   |- uninstall
+|   |- uninstall.rb
+|- lib
+|   |- templates
+|   |   |- class.rb.sample
+|   |   |- module.rb.sample
+|   |   |- play.rb.sample
+|- .gitignore
+|- .version
+|- commands.rb
+|- installer.sh
+|- notes.txt
+|- playwright.sh
+|- README.md
+|- variables.rb
+
+  
+  
+Inside of plays/play_1/src is where you build your script.
+Feel free to expand inside of that folder and use subclasses.
+Use lib/ to put modules that you use across scripts.

@@ -1,0 +1,17 @@
+class **PLAY_NAME**
+
+  def self.run**DEF_ARGS**
+    new**CALL_ARGS**.run
+  end
+  
+  def initialize**DEF_ARGS**
+    **SET_VARS_FROM_ARGS**
+  end
+  
+  def run
+    # add code here
+  end
+  
+end
+
+ARGV.length > 1 ? **PLAY_NAME**.run(*ARGV[1..-1]) : **PLAY_NAME**.run
