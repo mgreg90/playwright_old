@@ -12,10 +12,7 @@ module Playwright
     CALL_ARGS_PLACEHOLDER = '**CALL_ARGS**'.freeze
     SET_VARS_FROM_ARGS_PLACEHOLDER = '**SET_VARS_FROM_ARGS**'.freeze
     
-    TEMPLATE_FOLDER = 'templates'.freeze
     PLAY_TEMPLATE_FILENAME = 'play.rb.sample'.freeze
-    
-    PLAY_DEST_PATH = 'plays'.freeze
     
     attr_reader :type, :args
     
@@ -26,7 +23,6 @@ module Playwright
     end
     
     def initialize(type, name, *args)
-      # name should be snake case
       @type = type.to_sym
       @name = to_snake_case(name)
       @args = args
@@ -51,20 +47,18 @@ module Playwright
     def template
       case type
       when :play
-        File.join(HOME, 'playwright', '.src', 'lib', TEMPLATE_FOLDER, PLAY_TEMPLATE_FILENAME)
+        File.join(TEMPLATES_PATH, PLAY_TEMPLATE_FILENAME)
       end
     end
     
     def dest_file
       case type
       when :play
-        File.join(HOME, 'playwright', PLAY_DEST_PATH, "#{name}.rb")
+        File.join(PLAYS_PATH, "#{name}.rb")
       end
     end
     
     def build_play
-      p dest_file
-      p FileUtils.pwd
       FileUtils.touch(dest_file)
       # loop template and build new file with map
       File.open(dest_file, 'w') do |output_file|
