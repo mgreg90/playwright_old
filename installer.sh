@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Welcome to playwright!
 
 function install() {
@@ -31,6 +33,7 @@ function install() {
   
   # Create file structure
   mkdir -p ~/playwright/plays ~/playwright/lib/classes ~/playwright/lib/modules ~/playwright/shell ~/playwright/.src
+  touch ~/playwright/shell/.generated_commands.sh
   echo 'File Structure Created'
   
   # Copy this repo over
@@ -45,7 +48,7 @@ function install() {
   then
     echo 'playwright.sh Already Sourced'
   else
-    echo "\n\n# Source playwright ruby scripting framework\nexport SOURCE_PLAYWRIGHT=\"$SOURCE_PLAYWRIGHT\"\nexport PLAYWRIGHT_BASH_PROFILE=\"$1\"\nsource \"$SOURCE_PLAYWRIGHT\"" >> $PLAYWRIGHT_BASH_PROFILE || (echo "Invalid Bash Profile Path!" && return 1)
+    echo "\n# Source playwright ruby scripting framework\nexport SOURCE_PLAYWRIGHT=\"$SOURCE_PLAYWRIGHT\"\nexport PLAYWRIGHT_BASH_PROFILE=\"$1\"\nsource \"$SOURCE_PLAYWRIGHT\"" >> $PLAYWRIGHT_BASH_PROFILE || (echo "Invalid Bash Profile Path!" && return 1)
     echo 'Sourced playwright.sh'
   fi
   
