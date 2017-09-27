@@ -37,10 +37,8 @@ function install() {
   echo 'File Structure Created'
   
   # Copy this repo over
-  mv "$(pwd)/.git" "$(pwd)/.git_temp"
   rm -rf ~/playwright/.src
   cp -R $(pwd) ~/playwright/.src
-  mv "$(pwd)/.git_temp" "$(pwd)/.git"
   echo 'Repo Copied Over'
   
   # source playwright.sh in bash profile
@@ -58,10 +56,10 @@ function install() {
   # Blammo! Done installing!
   if [[ $PLAYWRIGHT_BASH_PROFILE == *"zsh"* ]]
   then
-    zsh
+    exec zsh
   fi
   source "$PLAYWRIGHT_BASH_PROFILE"
-  echo 'Playwright has been installed!'  
+  echo 'Playwright has been installed!'
 }
 
 function uninstall() {

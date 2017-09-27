@@ -8,6 +8,7 @@ require_relative './commands/apply.rb'
 require_relative './commands/destroy.rb'
 require_relative './commands/generate.rb'
 require_relative './commands/list.rb'
+require_relative './commands/update.rb'
 require_relative './commands/uninstall.rb'
 
 module Playwright
@@ -34,6 +35,10 @@ module Playwright
 
     def self.uninstall(argv)
       Uninstall.run
+    end
+
+    def self.update(argv)
+      Update.run
     end
 
   end
