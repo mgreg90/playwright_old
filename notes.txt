@@ -39,7 +39,7 @@ All commands start with `playwright` except for the installer
   - Sources bash profile.
   
 6. `playwright update`
-  status: NOT IMPLEMENTED
+  status: IMPLEMENTED
   - downloads latest version from github and runs installer.sh
   
 7. `playwright uninstall`
