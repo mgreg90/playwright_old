@@ -120,3 +120,40 @@ playwright
 Inside of plays/play_1/src is where you build your script.
 Feel free to expand inside of that folder and use subclasses.
 Use lib/ to put modules that you use across scripts.
+
+PLAYWRIGHT AS A PLAY
+====================================================================
+
+THOUGHTS
+====================================================================
+ - A play should have it's own services
+ - A play should have it's own Gemfile
+ - This means `playwright g service` needs args like so:
+    `playwright g service [play_name] [service_name] [url] [actions]`
+ - For now, this is fine. Long term, we want to aggregate the gems
+    and services so they can be reused.
+
+
+FILE STRUCTURE
+====================================================================
+playwright
+  |- plays
+  |   |- my_play
+  |   |   |- lib
+  |   |   |   |- my_play.rb
+  |   |   |   |- my_play
+  |   |   |   |   |- my_subclass.rb
+  |   |   |- Gemfile
+  |   |- my_play_with_service
+  |   |   |- lib
+  |   |   |   |- my_play_with_service.rb
+  |   |   |   |- my_play_with_service
+  |   |   |   |   |- my_subclass.rb
+  |   |   |   |   services
+  |   |   |   |   |- service_class.rb
+  |   |   |- Gemfile
+  |- shell
+  |   |- user_commands.sh
+  |   |- .generated_commands.sh
+  |- .src
+  |   |- (complete copy of playwright from github)
