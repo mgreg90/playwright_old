@@ -24,8 +24,8 @@ module Playwright
       def plays
         File.foreach(GENERATED_COMMANDS_FILE).map do |line|
           line = line.strip
-          if line.include?('alias')
-            line.split('playwright_script ')[1].split('.rb')[0]
+          if line.include?('alias') && line.include?('playwright_script')
+            line.split('=').first.split('alias ')[1]
           end
         end.compact
       end

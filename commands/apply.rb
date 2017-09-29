@@ -4,7 +4,7 @@ module Playwright
 
       include Playwright::Utils
       include Playwright::Variables
-      
+
       GENERATED_COMMANDS_FILE = File.join(SHELL_PATH, '.generated_commands.sh')
 
       attr_accessor :lines
@@ -18,7 +18,7 @@ module Playwright
           "#!/bin/bash",
           '',
           'function playwright_script() {',
-          "\truby \"$HOME/playwright/plays/$1\" \"$@\"",
+          "\truby \"$HOME/playwright/plays/$1/lib/$1.rb\" \"$@\"",
           '}',
           ''
         ]
@@ -26,7 +26,7 @@ module Playwright
 
       def run
         @lines << Dir["#{Playwright::Variables::PLAYS_PATH}/*"].map do |filepath|
-          command_from_string(File.basename(filepath, '.rb'))
+          command_from_config(file_config(filepath))
         end
         @lines.flatten!
 
@@ -37,9 +37,14 @@ module Playwright
         puts "Your plays have been applied!"
       end
 
-      def command_from_string(string)
-        # string should be snake case
-        "alias #{string}=\"playwright_script #{string}.rb\""
+      def file_config(filepath)
+        JSON.parse(File.read(File.join(filepath, 'config.json')))
+      end
+
+      def command_from_config(file_config)
+        command_name = file_config['command_name']
+        file_name = file_config['file_name']
+        "alias #{command_name}=\"playwright_script #{file_name}\""
       end
 
     end

@@ -32,8 +32,8 @@ function install() {
   [ -d ~/playwright ] && cp -R ~/playwright ~/playwright_temp
   
   # Create file structure
-  mkdir -p ~/playwright/plays ~/playwright/lib/classes ~/playwright/lib/modules ~/playwright/shell ~/playwright/.src
-  touch ~/playwright/shell/.generated_commands.sh
+  mkdir -p ~/playwright/plays ~/playwright/shell ~/playwright/.src
+  touch ~/playwright/shell/.generated_commands.sh ~/playwright/shell/user_commands.sh
   echo 'File Structure Created'
   
   # Copy this repo over

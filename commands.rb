@@ -1,4 +1,5 @@
 require 'FileUtils'
+require 'json'
 
 require_relative './lib/utils.rb'
 require_relative './lib/file_builder.rb'
