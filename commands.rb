@@ -1,13 +1,23 @@
-require 'FileUtils'
+require 'rubygems'
+require 'bundler'
+Bundler.setup(:default)
+
+# require 'FileUtils'
 require 'json'
+require 'httparty'
+require 'pry'
 
 require_relative './lib/utils.rb'
 require_relative './lib/file_builder.rb'
+require_relative './lib/arguments.rb'
+require_relative './lib/params.rb'
+require_relative './lib/play.rb'
 
 require_relative './variables.rb'
 require_relative './commands/apply.rb'
 require_relative './commands/destroy.rb'
 require_relative './commands/generate.rb'
+require_relative './commands/get.rb'
 require_relative './commands/list.rb'
 require_relative './commands/update.rb'
 require_relative './commands/uninstall.rb'
@@ -28,6 +38,10 @@ module Playwright
       Generate.run(argv)
     end
     def self.g(argv); self.generate(argv); end
+
+    def self.get(argv)
+      Get.run(argv)
+    end
 
     def self.list(argv)
       List.run

@@ -18,8 +18,8 @@ module Playwright
         @args = args
       end
 
-      def file_name
-        to_snake_case(command_name)
+      def file_name(suffix=false)
+        "#{to_snake_case(command_name)}#{suffix ? '_play' : ''}"
       end
 
       def run
@@ -59,7 +59,7 @@ module Playwright
       end
 
       def play_path
-        "#{PLAYS_PATH}/#{file_name}"
+        "#{PLAYS_PATH}/#{file_name(true)}"
       end
 
       def config_file_path

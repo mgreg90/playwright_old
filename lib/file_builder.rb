@@ -54,7 +54,7 @@ module Playwright
     def dest_file
       case type
       when :play
-        File.join(PLAYS_PATH, name, 'lib', "#{name}.rb")
+        File.join(PLAYS_PATH, "#{name}_play", 'lib', "#{name}.rb")
       end
     end
     

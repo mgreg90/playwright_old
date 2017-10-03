@@ -15,6 +15,7 @@ module Playwright
       "export PLAYWRIGHT_BASH_PROFILE=\"/Users/mgregory/.zshrc\"".freeze,
       "source \"/Users/mgregory/playwright/.src/playwright.sh\"".freeze
     ].freeze
+    SERVER_URL = 'https://playwright.herokuapp.com/'.freeze
     
   end
 end
