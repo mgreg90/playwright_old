@@ -18,7 +18,7 @@ module Playwright
           "#!/bin/bash",
           '',
           'function playwright_script() {',
-          "\truby \"$HOME/playwright/plays/$1/lib/$1.rb\" \"$@\"",
+          "\truby \"$HOME/playwright/plays/$1_play/lib/$1.rb\" \"$@\"",
           '}',
           ''
         ]
@@ -34,6 +34,7 @@ module Playwright
         File.open(GENERATED_COMMANDS_FILE, 'w+') do |file|
           file.puts(lines)
         end
+        `bundle install --gemfile="~/playwright/.src/Gemfile"`
         puts "Your plays have been applied!"
       end
 

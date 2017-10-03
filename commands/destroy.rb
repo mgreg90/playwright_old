@@ -19,7 +19,7 @@ module Playwright
       def run
         case type
         when :play
-          FileUtils.rm_rf(File.join(Playwright::Variables::PLAYS_PATH, command_name))
+          FileUtils.rm_rf(File.join(Playwright::Variables::PLAYS_PATH, "#{command_name}_play"))
         end
         puts "Destroyed successfully!"
       end
