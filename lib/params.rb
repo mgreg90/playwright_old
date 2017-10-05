@@ -13,8 +13,9 @@ module Playwright
     end
     
     def []=(key, value)
-      define_singleton_method(:key) { value }
-      super(key, value)
+      val = value || ''
+      define_singleton_method(:key) { val }
+      super(key, val)
     end
     
   end

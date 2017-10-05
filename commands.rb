@@ -16,6 +16,7 @@ require_relative './lib/play.rb'
 require_relative './variables.rb'
 require_relative './commands/apply.rb'
 require_relative './commands/destroy.rb'
+require_relative './commands/edit.rb'
 require_relative './commands/generate.rb'
 require_relative './commands/get.rb'
 require_relative './commands/list.rb'
@@ -33,6 +34,10 @@ module Playwright
       Destroy.run(argv)
     end
     def self.d(argv); self.destroy(argv); end
+
+    def self.edit(argv)
+      Edit.run(argv)
+    end
 
     def self.generate(argv)
       Generate.run(argv)
