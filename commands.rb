@@ -20,6 +20,7 @@ require_relative './commands/edit.rb'
 require_relative './commands/generate.rb'
 require_relative './commands/get.rb'
 require_relative './commands/list.rb'
+require_relative './commands/rm.rb'
 require_relative './commands/update.rb'
 require_relative './commands/uninstall.rb'
 
@@ -52,6 +53,10 @@ module Playwright
       List.run
     end
     def self.l(argv); self.list(argv); end
+
+    def self.rm(argv)
+      Rm.run(argv)
+    end
 
     def self.uninstall(argv)
       Uninstall.run
