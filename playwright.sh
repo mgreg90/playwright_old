@@ -1,7 +1,10 @@
 #!/bin/bash
 
 playwright() {
+  TEMP_PATH=$(pwd)
+  cd ~/playwright/.src/
   ruby ~/playwright/.src/commands.rb "$@"
+  cd $TEMP_PATH
   if [[ "$1" == "apply" || "$1" == "uninstall" ]]
   then
     source "$PLAYWRIGHT_BASH_PROFILE"
