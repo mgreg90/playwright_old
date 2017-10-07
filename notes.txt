@@ -23,34 +23,31 @@ FILE STRUCTURE (INSTALLED)
 ====================================================================
 playwright
   |- plays
-  |   |- playwright
-  |   |   |- lib
-  |   |   |   |- playwright.rb (formerly commands.rb)
-  |   |   |   |- playwright
-  |   |   |   |   |- apply.rb
-  |   |   |   |   |- destroy.rb
-  |   |   |   |   |- edit.rb
-  |   |   |   |   |- generate.rb
-  |   |   |   |   |- get.rb
-  |   |   |   |   |- list.rb
-  |   |   |   |   |- rm.rb
-  |   |   |   |   |- uninstall.rb
-  |   |   |   |   |- update.rb
+  |   |- playwright_play
   |   |   |- Gemfile
   |   |   |- Gemfile.lock
-  |   |- my_play
   |   |   |- lib
-  |   |   |   |- my_play.rb
-  |   |   |   |- my_play
-  |   |   |   |   |- my_play_subclass.rb
+  |   |   |   |- apply.rb
+  |   |   |   |- destroy.rb
+  |   |   |   |- edit.rb
+  |   |   |   |- generate.rb
+  |   |   |   |- get.rb
+  |   |   |   |- list.rb
+  |   |   |   |- rm.rb
+  |   |   |   |- uninstall.rb
+  |   |   |   |- update.rb
+  |   |   |- playwright.rb (formerly commands.rb)
+  |   |- my_play
+  |   |   |- my_play.rb
+  |   |   |- lib
+  |   |   |   |- my_play_subclass.rb
   |   |   |- Gemfile
   |   |   |- Gemfile.lock
   |   |- my_play_with_service
+  |   |   |- my_play_with_service.rb
   |   |   |- lib
-  |   |   |   |- my_play_with_service.rb
-  |   |   |   |- my_play_with_service
-  |   |   |   |   |- my_subclass.rb
-  |   |   |   |   services
+  |   |   |   |- my_subclass.rb
+  |   |   |   |- services
   |   |   |   |   |- service_class.rb
   |   |   |- Gemfile
   |   |   |- Gemfile.lock
@@ -86,34 +83,33 @@ playwright
   |- README.md
   |- installer.sh
   |- lib
-  |   |- app
-  |   |   |- lib
-  |   |   |- Gemfile
-  |   |   |- Gemfile.lock
-  |   |   |   |- playwright
-  |   |   |   |   |- apply.rb
-  |   |   |   |   |- destroy.rb
-  |   |   |   |   |- edit.rb
-  |   |   |   |   |- generate.rb
-  |   |   |   |   |- get.rb
-  |   |   |   |   |- list.rb
-  |   |   |   |   |- rm.rb
-  |   |   |   |   |- uninstall.rb
-  |   |   |   |   |- update.rb
-  |   |   |   |- playwright.rb (formerly commands.rb)
   |   |- play
   |   |   |- arguments.rb
   |   |   |- params.rb
   |   |   |- play_utils.rb (formerly utils.rb)
   |   |   |- variables.rb
   |   |- play.rb
+  |   |- playwright_play
+  |   |   |- Gemfile
+  |   |   |- Gemfile.lock
+  |   |   |- lib
+  |   |   |   |- apply.rb
+  |   |   |   |- destroy.rb
+  |   |   |   |- edit.rb
+  |   |   |   |- generate.rb
+  |   |   |   |- get.rb
+  |   |   |   |- list.rb
+  |   |   |   |- rm.rb
+  |   |   |   |- uninstall.rb
+  |   |   |   |- update.rb
+  |   |   |- playwright.rb (formerly commands.rb)
   |   |- playwright_utils
   |   |   |- file_builder.rb
   |   |- templates
-  |   |   |- play.rb.sample
   |   |   |- abstract_service.rb.sample
-  |- playwright.sh
+  |   |   |- play.rb.sample
   |- notes.txt
+  |- playwright.sh
   |- .gitignore
   |- .version
   
