@@ -81,10 +81,15 @@ playwright
 FILE STRUCTURE (NOT INSTALLED)
 ====================================================================
 playwright
+  |- Gemfile
+  |- Gemfile.lock
+  |- README.md
+  |- installer.sh
   |- lib
-  |   |- playwright
+  |   |- app
   |   |   |- lib
-  |   |   |   |- playwright.rb (formerly commands.rb)
+  |   |   |- Gemfile
+  |   |   |- Gemfile.lock
   |   |   |   |- playwright
   |   |   |   |   |- apply.rb
   |   |   |   |   |- destroy.rb
@@ -95,24 +100,20 @@ playwright
   |   |   |   |   |- rm.rb
   |   |   |   |   |- uninstall.rb
   |   |   |   |   |- update.rb
-  |   |   |- Gemfile
-  |   |   |- Gemfile.lock
+  |   |   |   |- playwright.rb (formerly commands.rb)
   |   |- play
   |   |   |- arguments.rb
   |   |   |- params.rb
-  |   |   |- variables.rb
   |   |   |- play_utils.rb (formerly utils.rb)
-  |   |- templates
-  |   |   |- play.rb.sample
-  |   |   |- service.rb.sample
+  |   |   |- variables.rb
+  |   |- play.rb
   |   |- playwright_utils
   |   |   |- file_builder.rb
-  |   |   play.rb
-  |- Gemfile
-  |- Gemfile.lock
-  |- installer.sh
+  |   |- templates
+  |   |   |- play.rb.sample
+  |   |   |- abstract_service.rb.sample
   |- playwright.sh
-  |- README.md
+  |- notes.txt
   |- .gitignore
   |- .version
   
