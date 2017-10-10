@@ -39,6 +39,9 @@ function install() {
   # Copy this repo over
   rm -rf ~/playwright/.src
   cp -R $(pwd) ~/playwright/.src
+  
+  # Move playwright_play over
+  mv ~/playwright/.src/lib/playwright_play ~/playwright/plays/playwright_play
   echo 'Repo Copied Over'
   
   # source playwright.sh in bash profile
