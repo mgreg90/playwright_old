@@ -31,10 +31,6 @@ module Playwright
       Apply.run
     end
 
-    def self.destroy(argv)
-      Destroy.run(argv)
-    end
-    def self.d(argv); self.destroy(argv); end
 
     def self.edit(argv)
       Edit.run(argv)
@@ -57,6 +53,8 @@ module Playwright
     def self.rm(argv)
       Rm.run(argv)
     end
+    def self.destroy(argv); self.rm(argv); end
+    def self.d(argv); self.rm(argv); end
 
     def self.uninstall(argv)
       Uninstall.run

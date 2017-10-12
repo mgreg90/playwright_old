@@ -49,7 +49,6 @@ playwright
   |   |   |- Gemfile.lock
   |   |   |- lib
   |   |   |   |- apply.rb
-  |   |   |   |- destroy.rb
   |   |   |   |- edit.rb
   |   |   |   |- generate.rb
   |   |   |   |- get.rb
