@@ -36,6 +36,8 @@ function install() {
   touch ~/playwright/shell/.generated_commands.sh ~/playwright/shell/user_commands.sh
   echo 'File Structure Created'
   
+  # Bundle playwright play
+  
   # Copy this repo over
   rm -rf ~/playwright/.src
   cp -R $(pwd) ~/playwright/.src
