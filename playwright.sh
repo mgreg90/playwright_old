@@ -2,8 +2,8 @@
 
 playwright() {
   TEMP_PATH=$(pwd)
-  cd ~/playwright/.src/
-  ruby ~/playwright/.src/commands.rb "$@"
+  cd ~/playwright/
+  ruby ~/playwright/plays/playwright_play/playwright.rb "$@"
   cd $TEMP_PATH
   if [[ "$1" == "apply" || "$1" == "uninstall" ]]
   then
